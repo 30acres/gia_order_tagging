@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jonny Dalgleish"]
   spec.email         = ["fighella@gmail.com"]
 
-  spec.summary       = %q{Adds size tags to Shopify Products.}
+  spec.summary       = %q{Adds order tags to Shopify Orders.}
   spec.homepage      = "http://git.30acres.com.au"
   spec.license       = "MIT"
 
