@@ -32,8 +32,9 @@ module OrderTagging
       puts "============"
       puts "All Orders Array / Page Count #{all_orders_array.count}"
       puts "============"
-      all_orders_array.each do |shopify_order|
-        puts shopify_order.inspect
+      all_orders_array.each_with_index do |shopify_order, index|
+        # puts shopify_order.inspect
+        puts index
         OrderTag.new(shopify_order).add_order_tags
       end
     end

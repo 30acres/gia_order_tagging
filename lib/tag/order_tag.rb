@@ -20,21 +20,21 @@ class OrderTag
     end
   end
 
-  def cleaned_tags
-    @order.tags.split(',').reject{ |c| c.empty? or c == "  " }.uniq.join(',')
-  end
-
-  def initial_tags
-    @initial_order_tags
-  end
-
-  def tags_changed?
-    clean_tags(initial_tags) != clean_tags(cleaned_tags)
-  end
-
-  def clean_tags(tags)
-    tags.split(',').map{ |t| t.strip }.uniq.sort
-  end
+  # def cleaned_tags
+  #   @order.tags.split(',').reject{ |c| c.empty? or c == "  " }.uniq.join(',')
+  # end
+  #
+  # def initial_tags
+  #   @initial_order_tags
+  # end
+  #
+  # def tags_changed?
+  #   clean_tags(initial_tags) != clean_tags(cleaned_tags)
+  # end
+  #
+  # def clean_tags(tags)
+  #   tags.split(',').map{ |t| t.strip }.uniq.sort
+  # end
 
 
 end
