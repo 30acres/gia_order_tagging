@@ -28,7 +28,7 @@ module OrderTagging
 
   def self.process_all_orders
     puts "============"
-    puts "All Orders Array / Page Count #{all_orders_array_count}"
+    puts "All Orders Array / Page Count #{all_orders_array.count}"
     puts "============"
     all_orders_array.each do |page|
       puts "============"
