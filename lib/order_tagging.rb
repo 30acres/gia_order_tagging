@@ -2,7 +2,7 @@ require "order_tagging/version"
 
 module OrderTagging
   require "order/order"
-  require "tag/tag"
+  require "tag/order_tag"
 
   def self.update_all_orders
     OrderTagging::Tag.process_all_tags
