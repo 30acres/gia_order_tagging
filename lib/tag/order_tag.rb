@@ -6,6 +6,7 @@ class OrderTag
   end
 
   def add_order_tags
+    puts @order.inspect
     if !@order.tags.include?('International') && @order.shipping_address && @order.shipping_address.country != 'Australia'
       @order.tags = @order.tags + ', International'
       sleep(1)
