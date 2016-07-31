@@ -6,15 +6,17 @@ class OrderTag
   end
 
   def add_order_tags
-    if @order.shipping_address & @order.shipping_address.country != 'Australia'
+    if !@order.tags.include?('International') && @order.shipping_address && @order.shipping_address.country != 'Australia'
       @order.tags = @order.tags + ', International'
+      sleep(1)
+      @order.save!
     end
 
-    if @order.customer & @order.customer.tags.include?('holesale')
+    if !@order.tags.include?('Wholesale') && @order.customer && @order.customer.tags.include?('holesale')
       @order.tags = @order.tags + ', Wholesale'
+      sleep(1)
+      @order.save!
     end
-    sleep(1)
-    @order.save!
   end
 
   def cleaned_tags
