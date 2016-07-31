@@ -26,5 +26,23 @@ module OrderTagging
       ShopifyAPI::Order.count
     end
 
+  def self.process_all_tags
+    all_products_array.each do |page|
+      page.each do |order|
+        OrderTag.new(order).add_order_tags
+      end
+    end
+  end
+
+  def self.process_recent_tags
+    recent_order_array.each do |page|
+      page.each do |order|
+        OrderTag.new(order).add_order_tags
+      end
+    end
+  end
+
+
+
   end
 end

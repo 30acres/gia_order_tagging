@@ -44,21 +44,5 @@ class OrderTag
     tags.split(',').map{ |t| t.strip }.uniq.sort
   end
 
-  def self.process_all_tags
-    Order.all_products_array.each do |page|
-      page.each do |order|
-        Tag.new(order).add_order_tags
-      end
-    end
-  end
-
-  def self.process_recent_tags
-    Order.recent_order_array.each do |page|
-      page.each do |order|
-        Tag.new(order).add_order_tags
-      end
-    end
-  end
-
 
 end
