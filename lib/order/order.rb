@@ -31,6 +31,7 @@ module OrderTagging
     puts "All Orders Array / Page Count #{all_orders_array.count}"
     puts "============"
     all_orders_array.each do |page|
+      binding.pry
       puts "============"
       puts "Orders Per Page Count #{page.count}"
       puts "============"
