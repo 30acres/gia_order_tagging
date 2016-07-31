@@ -9,7 +9,7 @@ module OrderTagging
       p_arr
     end
 
-    def self.recent_orders_array
+    def self.recent_products_array
       params = { updated_at_min: 15.minutes.ago }
       all_orders_array(params)
     end
@@ -27,7 +27,7 @@ module OrderTagging
     end
 
   def self.process_all_orders
-    all_products_array.each do |page|
+    all_orders_array.each do |page|
       page.each do |order|
         OrderTag.new(order).add_order_tags
       end
@@ -35,7 +35,7 @@ module OrderTagging
   end
 
   def self.process_recent_orders
-    recent_order_array.each do |page|
+    recent_products_array.each do |page|
       page.each do |order|
         OrderTag.new(order).add_order_tags
       end
