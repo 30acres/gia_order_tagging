@@ -4,7 +4,7 @@ class OrderTag
     @order = ShopifyAPI::Order.find(order)
 
     # @customer = @order.customer
-    @initial_order_tags = order.tags
+    @initial_order_tags = @order.tags
   end
 
   def add_order_tags
