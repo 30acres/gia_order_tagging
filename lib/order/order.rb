@@ -4,7 +4,7 @@ module OrderTagging
       p_arr = []
       find_params = { limit: limit }.merge(params)
       pages.times do |p|
-        p_arr << ShopifyAPI::Order.find(:all, params: find_params.merge({ page: p}) ) 
+        p_arr = p_arr.zip(ShopifyAPI::Order.find(:all, params: find_params.merge({ page: p}) )).flatten.compact
       end
       p_arr
     end
@@ -26,28 +26,24 @@ module OrderTagging
       ShopifyAPI::Order.count
     end
 
-  def self.process_all_orders
-    puts "============"
-    puts "All Orders Array / Page Count #{all_orders_array.count}"
-    puts "============"
-    all_orders_array.each do |page|
-      binding.pry
+    def self.process_all_orders
       puts "============"
-      puts "Orders Per Page Count #{page.count}"
+      puts "All Orders Array / Page Count #{all_orders_array.count}"
       puts "============"
-      page.each do |order|
-        OrderTag.new(order).add_order_tags
+      all_orders_array.each do |shopify_order|
+        binding.pry
+        puts "============"
+        puts "Orders Per Page Count #{page.count}"
+        puts "============"
+        OrderTag.new(shopify_order).add_order_tags
       end
     end
-  end
 
-  def self.process_recent_orders
-    recent_products_array.each do |page|
-      page.each do |order|
-        OrderTag.new(order).add_order_tags
+    def self.process_recent_orders
+      recent_products_array.each do |shopify_order|
+          OrderTag.new(shopify_order).add_order_tags
       end
     end
-  end
 
 
 
