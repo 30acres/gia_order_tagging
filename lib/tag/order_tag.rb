@@ -1,7 +1,8 @@
 class OrderTag
   def initialize(order)
     
-    @order = ShopifyAPI::Order.find(order)
+    @order = ShopifyAPI::Order.find(order.id)
+
     # @customer = @order.customer
     @initial_order_tags = order.tags
   end
