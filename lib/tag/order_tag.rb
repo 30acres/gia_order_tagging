@@ -9,7 +9,7 @@ class OrderTag
 
   def add_order_tags
     puts @order.inspect
-    if !@order.tags.include?('International') && @order.requires_shipping && @order.shipping_address && @order.shipping_address.country != 'Australia'
+    if !@order.tags.include?('International') && @order.line_items.select { |li| li.requires_shipping == 'true' }.any? && @order.shipping_address && @order.shipping_address.country != 'Australia'
       @order.tags = @order.tags + ', International'
       sleep(1)
       puts 'SLEEP 1'
