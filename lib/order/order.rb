@@ -38,7 +38,9 @@ module OrderTagging
       all_orders_array.each_with_index do |shopify_order, index|
         # puts shopify_order.inspect
         puts index
+        sleep(1)
         OrderTag.new(shopify_order).add_order_tags
+
       end
     end
 
