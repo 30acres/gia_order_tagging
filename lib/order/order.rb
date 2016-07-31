@@ -15,11 +15,11 @@ module OrderTagging
     end
 
     def self.pages
-      count/limit
+      count/limit + 1
     end
 
     def self.limit
-      250
+      50
     end
 
     def self.count
@@ -27,7 +27,13 @@ module OrderTagging
     end
 
   def self.process_all_orders
+    puts "============"
+    puts "All Orders Array / Page Count #{all_orders_array_count}"
+    puts "============"
     all_orders_array.each do |page|
+      puts "============"
+      puts "Orders Per Page Count #{page.count}"
+      puts "============"
       page.each do |order|
         OrderTag.new(order).add_order_tags
       end
