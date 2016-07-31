@@ -7,6 +7,7 @@ class OrderTag
 
   def add_order_tags
     binding.pry
+    
     # @product.tags = removed_initial_tags
     # if has_size_option?
     #   if has_variants?
