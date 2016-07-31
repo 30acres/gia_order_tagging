@@ -6,27 +6,15 @@ class OrderTag
   end
 
   def add_order_tags
-    binding.pry
-    
-    # @product.tags = removed_initial_tags
-    # if has_size_option?
-    #   if has_variants?
-    #     variants.each do |variant|
-    #       @product.tags = [@product.tags,order_tag(variant)].join(',')
-    #     end
-    #   end
-    # end
-    # puts "PRODUCT ID (before): #{@product.id}"
-    # puts "#{initial_tags} ====> #{cleaned_tags}"
-    # if tags_changed?
-    #   # puts "#{@product.title} : Updated Tags!"
-    #   @product.tags = cleaned_tags
-    #   @product.save!
-    #   puts "PRODUCT ID (after): #{@product.id}"
-    #   sleep(1.second) ## For the API
-    # else
-    #   # puts "#{@product.title} : No Change in Tags!"
-    # end
+    if @order.shipping_address & @order.shipping_address.country != 'Australia'
+      @order.tags = @order.tags + ', International'
+    end
+
+    if @order.customer & @order.customer.tags.include?('holesale')
+      @order.tags = @order.tags + ', Wholesale'
+    end
+    sleep(1)
+    @order.save!
   end
 
   def cleaned_tags
