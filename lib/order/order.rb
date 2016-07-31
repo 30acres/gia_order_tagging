@@ -8,6 +8,9 @@ module OrderTagging
           p_arr << so
         end
       end
+      puts 'PARR COUNT'
+      puts p_arr.count
+      puts 'RARRR'
       p_arr
     end
 

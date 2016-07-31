@@ -10,11 +10,13 @@ class OrderTag
     if !@order.tags.include?('International') && @order.shipping_address && @order.shipping_address.country != 'Australia'
       @order.tags = @order.tags + ', International'
       sleep(1)
+      puts 'SLEEP 1'
       @order.save!
     end
 
     if !@order.tags.include?('Wholesale') && @order.customer && @order.customer.tags.include?('holesale')
       @order.tags = @order.tags + ', Wholesale'
+      puts 'SLEEP 2'
       sleep(1)
       @order.save!
     end
