@@ -4,7 +4,9 @@ module OrderTagging
       p_arr = []
       find_params = { limit: limit }.merge(params)
       pages.times do |p|
-        p_arr = p_arr.zip(ShopifyAPI::Order.find(:all, params: find_params.merge({ page: p}) )).flatten.compact
+        ShopifyAPI::Order.find(:all, params: find_params.merge({ page: p}) ).each do |so|
+          p_arr << so
+        end
       end
       p_arr
     end
@@ -31,13 +33,6 @@ module OrderTagging
       puts "All Orders Array / Page Count #{all_orders_array.count}"
       puts "============"
       all_orders_array.each do |shopify_order|
-        
-        binding.pry
-
-        puts "============"
-        puts "Orders Per Page Count #{page.count}"
-        puts "============"
-
         puts shopify_order.inspect
         OrderTag.new(shopify_order).add_order_tags
       end
