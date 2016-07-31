@@ -1,7 +1,7 @@
 class OrderTag
   def initialize(order)
     
-    @order = ShopifyAPI::Order.find(order.id)
+    @order = ShopifyAPI::Order.find(order)
 
     # @customer = @order.customer
     @initial_order_tags = order.tags
@@ -9,7 +9,7 @@ class OrderTag
 
   def add_order_tags
     puts @order.inspect
-    if !@order.tags.include?('International') && @order.shipping_address && @order.shipping_address.country != 'Australia'
+    if !@order.tags.include?('International') && @order.requires_shipping && @order.shipping_address && @order.shipping_address.country != 'Australia'
       @order.tags = @order.tags + ', International'
       sleep(1)
       puts 'SLEEP 1'

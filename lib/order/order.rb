@@ -5,7 +5,7 @@ module OrderTagging
       find_params = { limit: limit }.merge(params)
       pages.times do |p|
         ShopifyAPI::Order.find(:all, params: find_params.merge({ page: p}) ).each do |so|
-          p_arr << so
+          p_arr << so.id
         end
       end
       puts 'PARR COUNT'
