@@ -38,7 +38,7 @@ module OrderTagging
         puts "Orders Per Page Count #{page.count}"
         puts "============"
 
-
+        puts shopify_order.inspect
         OrderTag.new(shopify_order).add_order_tags
       end
     end
