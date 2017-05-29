@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'order_tagging/version'
+require 'gia_order_tagging/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "order_tagging"
-  spec.version       = OrderTagging::VERSION
+  spec.name          = "gia_order_tagging"
+  spec.version       = GiaOrderTagging::VERSION
   spec.authors       = ["Jonny Dalgleish"]
   spec.email         = ["fighella@gmail.com"]
 

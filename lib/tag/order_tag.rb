@@ -8,20 +8,21 @@ class OrderTag
   end
 
   def add_order_tags
-    puts @order.inspect
-    if !@order.tags.include?('International') && @order.line_items.select { |li| li.requires_shipping }.any? && @order.shipping_address && @order.shipping_address.country != 'Australia'
-      @order.tags = @order.tags + ', International'
-      sleep(1)
-      puts 'SLEEP 1'
-      @order.save!
-    end
-
-    if !@order.tags.include?('Wholesale') && @order.customer && @order.customer.tags.include?('holesale')
-      @order.tags = @order.tags + ', Wholesale'
-      puts 'SLEEP 2'
-      sleep(1)
-      @order.save!
-    end
+    binding.pry
+    # puts @order.inspect
+    # if !@order.tags.include?('International') && @order.line_items.select { |li| li.requires_shipping }.any? && @order.shipping_address && @order.shipping_address.country != 'Australia'
+    #   @order.tags = @order.tags + ', International'
+    #   sleep(1)
+    #   puts 'SLEEP 1'
+    #   @order.save!
+    # end
+    #
+    # if !@order.tags.include?('Wholesale') && @order.customer && @order.customer.tags.include?('holesale')
+    #   @order.tags = @order.tags + ', Wholesale'
+    #   puts 'SLEEP 2'
+    #   sleep(1)
+    #   @order.save!
+    # end
   end
 
   # def cleaned_tags
