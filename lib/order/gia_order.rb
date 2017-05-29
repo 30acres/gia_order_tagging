@@ -1,4 +1,5 @@
-module GiaOrderTagging::Order
+module GiaOrderTagging
+  module GiaOrder
     def self.all_orders_array(params={})
       p_arr = []
       find_params = { limit: limit }.merge(params)
@@ -45,10 +46,11 @@ module GiaOrderTagging::Order
 
     def self.process_recent_orders
       recent_products_array.each do |shopify_order|
-          OrderTag.new(shopify_order).add_order_tags
+          GiaOrderTag.new(shopify_order).add_order_tags
       end
     end
 
 
 
   end
+end
