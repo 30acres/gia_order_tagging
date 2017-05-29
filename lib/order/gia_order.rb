@@ -42,7 +42,7 @@ module GiaOrderTagging
         # puts shopify_order.inspect
         puts index
         sleep(1)
-        OrderTag.new(shopify_order).add_order_tags
+        GiaOrderTag.new(shopify_order).add_order_tags
 
       end
     end
