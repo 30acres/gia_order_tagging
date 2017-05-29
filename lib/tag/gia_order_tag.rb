@@ -24,7 +24,6 @@ module GiaOrderTagging
           @order.save!
           sleep(1)
           puts 'SLEEP 1'
-
         end
       end
 
