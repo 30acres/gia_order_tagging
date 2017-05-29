@@ -14,7 +14,7 @@ module GiaOrderTagging
     end
 
     def has_unshipped_pre_order?
-      @order.line_items.any? { |li| li.sku.include? 'TM3572CAR-' and li.fulfillment_status.to_s.downcase != 'fulfilled' }
+      @order.line_items.any? { |li| li.title.include? 'Pixie Coat' and li.variant_title.include? 'Caramel' and li.fulfillment_status.to_s.downcase != 'fulfilled' }
     end
 
     def add_order_tags
