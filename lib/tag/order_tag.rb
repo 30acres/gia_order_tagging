@@ -1,3 +1,4 @@
+module GiaOrderTagging
 class OrderTag
   def initialize(order)
     
@@ -42,4 +43,5 @@ class OrderTag
   # end
 
 
+end
 end

@@ -1,3 +1,4 @@
+module GiaOrderTagging
   module Order
     def self.all_orders_array(params={})
       p_arr = []
@@ -52,3 +53,4 @@
 
 
   end
+end
