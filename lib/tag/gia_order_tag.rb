@@ -10,16 +10,16 @@ module GiaOrderTagging
 
     def is_fulfilled?
       # "fulfillment_status"=>nil,
-      @order.fulfillment_status == 'Fulfilled'
+      @order.fulfillment_status.downcase == 'fulfilled'
     end
 
-    def has_pre_order?
-      @order.line_items.any? { |li| li.sku.include? 'TM3572CAR-' }
+    def has_unshipped_pre_order?
+      @order.line_items.any? { |li| li.sku.include? 'TM3572CAR-' and li.fulfillment_status.downcase != 'fulfilled' }
     end
 
     def add_order_tags
       unless is_fulfilled? 
-        if has_pre_order?
+        if has_unshipped_pre_order?
           @order.tags = @order.tags + ', Pixie Coat Caramel (May PreOrder)'
           @order.save!
           sleep(1)
