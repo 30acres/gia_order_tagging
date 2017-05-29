@@ -1,4 +1,4 @@
-require "order_tagging/version"
+require "gia_order_tagging/version"
 
 module GiaOrderTagging
   require "order/order"
