@@ -1,5 +1,5 @@
 module GiaOrderTagging
-  module Order
+  class Order
     def self.all_orders_array(params={})
       p_arr = []
       find_params = { limit: limit }.merge(params)
