@@ -10,11 +10,11 @@ module GiaOrderTagging
 
     def is_fulfilled?
       # "fulfillment_status"=>nil,
-      @order.fulfillment_status.downcase == 'fulfilled'
+      @order.fulfillment_status.to_s.downcase == 'fulfilled'
     end
 
     def has_unshipped_pre_order?
-      @order.line_items.any? { |li| li.sku.include? 'TM3572CAR-' and li.fulfillment_status.downcase != 'fulfilled' }
+      @order.line_items.any? { |li| li.sku.include? 'TM3572CAR-' and li.fulfillment_status.to_s.downcase != 'fulfilled' }
     end
 
     def add_order_tags
