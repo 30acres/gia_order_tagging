@@ -13,7 +13,7 @@ module GiaOrderTagging
       @order.fulfillment_status == 'Fulfilled'
     end
 
-    def has_pre_orders?
+    def has_pre_order?
       @order.line_items.any? { |li| li.sku.include? 'TM3572CAR-' }
     end
 
