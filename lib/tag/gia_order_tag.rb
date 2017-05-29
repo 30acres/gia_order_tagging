@@ -8,8 +8,27 @@ module GiaOrderTagging
       @initial_order_tags = @order.tags
     end
 
+    def is_fulfilled?
+      # "fulfillment_status"=>nil,
+      @order.fulfillment_status == 'Fulfilled'
+    end
+
+    def has_pre_orders?
+      @order.line_items.any? { |li| li.sku.include? 'TM3572CAR-' }
+    end
+
     def add_order_tags
-      binding.pry
+      unless is_fulfilled? 
+        if has_pre_order?
+          @order.tags = @order.tags + ', Pixie Coat Caramel (May PreOrder)'
+          @order.save!
+          sleep(1)
+          puts 'SLEEP 1'
+
+        end
+      end
+
+
       # puts @order.inspect
       # if !@order.tags.include?('International') && @order.line_items.select { |li| li.requires_shipping }.any? && @order.shipping_address && @order.shipping_address.country != 'Australia'
       #   @order.tags = @order.tags + ', International'
