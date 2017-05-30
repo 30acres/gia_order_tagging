@@ -1,6 +1,8 @@
 module GiaOrderTagging
   class GiaOrder
-    def initialize
+    def initialize(tag,opts={})
+      @tag = tag
+      @opts = opts
     end
     
     def self.all_orders_array(params={})
@@ -42,14 +44,14 @@ module GiaOrderTagging
         # puts shopify_order.inspect
         puts index
         sleep(1)
-        GiaOrderTag.new(shopify_order).add_order_tags
+        GiaOrderTag.new(shopify_order,@tag,@opts).add_order_tags
 
       end
     end
 
     def self.process_recent_orders
       recent_products_array.each do |shopify_order|
-          GiaOrderTag.new(shopify_order).add_order_tags
+          GiaOrderTag.new(shopify_order,@tag,@opts).add_order_tags
       end
     end
 
