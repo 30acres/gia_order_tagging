@@ -5,7 +5,7 @@ require "tag/gia_order_tag"
 
 
   def self.update_all_orders(tag,opts)
-    preorders = [
+    pre_orders = [
       { sku: 'TM3749RED', title: 'Delevingne Hoodie'},
       { sku: 'GIA3754SIL', title: 'Sienna Skirt'},
       { sku: 'GIA3775SIL', title: 'Sienna Top'},
