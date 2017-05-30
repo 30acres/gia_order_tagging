@@ -1,8 +1,8 @@
 module GiaOrderTagging
   class GiaOrder
-    def initialize(tag,opts={})
-      @tag = tag
-      @opts = opts
+    def initialize ##(tag,opts={})
+      # @tag = tag
+      # @opts = opts
     end
     
     def self.all_orders_array(params={})
@@ -36,7 +36,7 @@ module GiaOrderTagging
       ShopifyAPI::Order.count
     end
 
-    def self.process_all_orders
+    def self.process_all_orders(tag,opts)
       puts "============"
       puts "All Orders Array / Page Count #{all_orders_array.count}"
       puts "============"
@@ -44,14 +44,14 @@ module GiaOrderTagging
         # puts shopify_order.inspect
         puts index
         sleep(1)
-        GiaOrderTag.new(shopify_order,@tag,@opts).add_order_tags
+        GiaOrderTag.new(shopify_order,tag,opts).add_order_tags
 
       end
     end
 
-    def self.process_recent_orders
+    def self.process_recent_orders(tag,opts)
       recent_products_array.each do |shopify_order|
-          GiaOrderTag.new(shopify_order,@tag,@opts).add_order_tags
+          GiaOrderTag.new(shopify_order,tag,opts).add_order_tags
       end
     end
 
